@@ -1,0 +1,12 @@
+---
+- name: Update package
+  dnf:
+    name: '*'
+    state: latest
+    update_cache: yes
+
+- name: Upgrade packages and kernel modules
+  shell: "dnf upgrade -y"
+  args:
+    executable: /bin/bash
+    warn: false
