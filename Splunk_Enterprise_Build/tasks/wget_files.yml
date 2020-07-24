@@ -1,0 +1,16 @@
+- name: Create a directory if it does not exist
+  file:
+    path: /tmp/files
+    state: directory
+    mode: '0755'
+
+- name: install wget if not installed
+  dnf:
+    name: wget
+    state: latest
+
+- name: wget splunk server to /tmp/files
+  shell: "{{ splunk_wget_command }}"
+  args:
+    chdir: /tmp/files
+    warn: false
