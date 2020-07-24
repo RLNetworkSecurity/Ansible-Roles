@@ -1,0 +1,25 @@
+---
+ - name: Splunk 8 Build on Centos 8 Server
+   hosts: "{{ linux_hosts }}"
+   tasks:
+   
+     - name: Update packages on all boxes
+       import_tasks: dnf_update_all.yml
+
+     - name: wget the required files
+       import_tasks: wget_files.yml
+       
+     - name: Configure Splunk user
+       import_tasks: create_user.yml
+
+     - name: Build splunk dir's
+       import_tasks: build_splunk_dir.yml
+ 
+     - name: Configure Splunk boot & start
+       import_tasks: splunk_start.yml
+       
+     - name: Configure Firewall
+       import_tasks: firewall_configuration.yml
+       
+     - name: Reboot Machine
+       import_tasks: reboot.yml
