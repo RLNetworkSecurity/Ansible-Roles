@@ -1,0 +1,12 @@
+- name: tar splunk file to splunk dir
+  shell: 'tar xvzf /tmp/files/splunk*.tgz -C /opt'
+  args:
+    warn: false
+
+- name: Recursively change ownership of a directory
+  file:
+    path: /opt/splunk
+    state: directory
+    recurse: yes
+    owner: splunk
+    group: splunk
