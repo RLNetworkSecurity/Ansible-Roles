@@ -1,0 +1,10 @@
+- firewalld:
+    zone: "{{ firewall_zone }}"
+    port: 8000/tcp
+    permanent: yes
+    state: enabled
+    
+- firewalld:
+    zone: "{{ firewall_zone }}"
+    port: 8000/tcp
+    state: enabled
