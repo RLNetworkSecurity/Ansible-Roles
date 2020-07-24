@@ -1,0 +1,10 @@
+- name: create splunk group
+  group:
+    name: splunk
+    state: present
+
+- name: Add the user 'splunk' with a specific group of 'splunk'
+  user:
+    name: splunk
+    comment: splunk user
+    group: splunk
