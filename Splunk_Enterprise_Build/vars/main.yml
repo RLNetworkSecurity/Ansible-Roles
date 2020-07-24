@@ -1,1 +1,5 @@
 ---
+linux_host: splunk
+splunk_wget_command: #copied from Splunk Website
+splunk_credential: changeme
+firewall_zone: public
