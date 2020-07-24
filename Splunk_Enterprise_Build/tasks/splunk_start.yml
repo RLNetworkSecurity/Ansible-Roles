@@ -1,0 +1,9 @@
+- name: Splunk Accept-license create user account & start
+  shell: '/opt/splunk/bin/splunk start --accept-license --answer-yes --no-prompt --seed-passwd "{{ splunk_credential }}"'
+  args:
+    warn: false
+    
+- name: Splunk enable boot-start
+  shell: '/opt/splunk/bin/splunk enable boot-start -user splunk'
+  args:
+    warn: false
