@@ -1,0 +1,22 @@
+---
+ - name: Deploy Cisco Splunk Application Role
+   hosts: "{{ linux_hosts }}"
+   tasks:
+          
+   - name: Extract applications from GitLab to Splunk
+     unarchive:
+       src: "{{ item }}"
+       dest: /opt/splunk/etc/apps/
+     with_items: "{{ splunk_applications }}"
+
+   - name: check cisco_ios in splunk applications
+     when: "'TA-cisco_ios.tar' in splunk_applications"
+     import_tasks: cisco_ios_inputs.yml
+
+   - name: Recursively change ownership of a directory - after application configuration
+     file:
+       path: /opt/splunk
+       state: directory
+       recurse: yes
+       owner: splunk
+       group: splunk
