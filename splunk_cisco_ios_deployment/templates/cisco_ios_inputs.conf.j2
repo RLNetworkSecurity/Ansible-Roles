@@ -1,0 +1,8 @@
+{% for item in cisco_ip %}  
+[udp://{{ item }}:{{ cisco_port }}]
+connection_host = ip
+index = {{ cisco_index }}
+source = {{ item }}:{{ cisco_port }}
+sourcetype = {{ cisco_sourcetype }}
+disabled = 0
+{% endfor %}
