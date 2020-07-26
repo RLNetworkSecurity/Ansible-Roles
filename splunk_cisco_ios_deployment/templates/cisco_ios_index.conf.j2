@@ -1,0 +1,7 @@
+[{{ cisco_index }}]
+homePath   = $SPLUNK_DB/{{ cisco_index }}/db
+coldPath   = $SPLUNK_DB/{{ cisco_index }}/colddb
+thawedPath = $SPLUNK_DB/{{ cisco_index }}/thaweddb
+maxDataSize = {{ max_data_size }}
+frozenTimePeriodInSecs = {{ frozen_time_seconds }}
+disabled = 0
