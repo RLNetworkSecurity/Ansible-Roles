@@ -1,0 +1,34 @@
+- name: Create a directory if it does not exist
+  file:
+    path: /opt/splunk/etc/apps/TA-cisco_ios/local
+    state: directory
+    mode: 0700
+
+- name: Create Cisco ios indexes.conf 
+  template:
+    src: cisco_ios_index.conf.j2
+    dest: /opt/splunk/etc/apps/TA-cisco_ios/local/indexes.conf
+    owner: splunk
+    group: splunk
+    mode: 0700
+
+- name: Create Cisco inputs.conf 
+  template:
+    src: cisco_ios_inputs.conf.j2
+    dest: /opt/splunk/etc/apps/TA-cisco_ios/local/inputs.conf
+    owner: splunk
+    group: splunk
+    mode: 0700
+
+- name: Configure firewall syslog (permanent)
+  firewalld:
+    zone: "{{ firewall_zone }}"
+    port: "{{ cisco_port }}/udp"
+    permanent: yes
+    state: enabled
+
+- name: Configure firewall for syslog - permanent
+  firewalld:
+    zone: "{{ firewall_zone }}"
+    port: "{{ cisco_port }}/udp"
+    state: enabled
