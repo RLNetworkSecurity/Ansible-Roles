@@ -1,0 +1,2 @@
+---
+#location of application files from Splunk website, specify an alternative location if not deployed by ansible. 
