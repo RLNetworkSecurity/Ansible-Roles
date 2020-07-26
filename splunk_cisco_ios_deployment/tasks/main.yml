@@ -11,7 +11,7 @@
 
    - name: check cisco_ios in splunk applications
      when: "'TA-cisco_ios.tar' in splunk_applications"
-     import_tasks: cisco_ios_inputs.yml
+     import_tasks: cisco_ios_ta_configuration.yml
 
    - name: Recursively change ownership of a directory - after application configuration
      file:
